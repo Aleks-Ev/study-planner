@@ -1,3 +1,4 @@
+import { selectedDate } from "./calendar.js";
 export function initTasks() {
   const container = document.getElementById("tasks");
 
@@ -20,28 +21,33 @@ export function initTasks() {
     list.innerHTML = "";
 
     tasks.forEach((t, i) => {
-      const li = document.createElement("li");
-      li.textContent = t.text;
-      if (t.done) li.style.textDecoration = "line-through";
+        if (t.date !== selectedDate) return;
+        const li = document.createElement("li");
+        li.textContent = t.text;
+        if (t.done) li.style.textDecoration = "line-through";
 
-      li.onclick = () => {
-        tasks[i].done = !tasks[i].done;
-        save();
-        render();
-      };
+        li.onclick = () => {
+            tasks[i].done = !tasks[i].done;
+            save();
+            render();
+        };
 
-      list.appendChild(li);
+        list.appendChild(li);
     });
   }
 
   container.querySelector("#addTask").onclick = () => {
     const text = container.querySelector("#taskInput").value.trim();
     if (!text) return;
-    tasks.push({ text, done: false });
+    tasks.push({ text, done: false, date: selectedDate });
     container.querySelector("#taskInput").value = "";
     save();
     render();
   };
+  if (selectedDate === null) {
+    container.querySelector("#taskList").innerHTML = "<li>Select a day in calendar</li>";
+  return;
+  }
 
   render();
 }

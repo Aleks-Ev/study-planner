@@ -42,4 +42,8 @@ nav button {
   border-radius: 5px;
   background: #fafafa;
 }
+.day.active {
+  background: #4caf50;
+  color: white;
+}
 
