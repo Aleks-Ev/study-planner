@@ -9,12 +9,17 @@ export function initProgress() {
 
   function update() {
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    if (tasks.length === 0) return;
+    if (tasks.length === 0) {
+      container.querySelector("#progressText").textContent = "No tasks yet";
+      container.querySelector("#bar").value = 0;
+      return;
+    }
 
     const done = tasks.filter(t => t.done).length;
     const percent = Math.round((done / tasks.length) * 100);
 
-    container.querySelector("#progressText").textContent = percent + "%";
+    container.querySelector("#progressText").textContent =
+      `${done}/${tasks.length} completed (${percent}%)`;
     container.querySelector("#bar").value = percent;
   }
 

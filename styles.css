@@ -28,3 +28,18 @@ nav button {
 .tab.hidden {
   display: none;
 }
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.day {
+  border: 1px solid #ccc;
+  padding: 8px;
+  min-height: 60px;
+  font-size: 12px;
+  border-radius: 5px;
+  background: #fafafa;
+}
+

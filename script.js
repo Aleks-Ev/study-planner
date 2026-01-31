@@ -2,6 +2,7 @@ import { initTimer } from "./modules/timer.js";
 import { initTasks } from "./modules/tasks.js";
 import { initProgress } from "./modules/progress.js";
 import { initNotifications } from "./modules/notifications.js";
+import { initCalendar } from "./modules/calendar.js";
 
 // Tabs
 const buttons = document.querySelectorAll("nav button");
@@ -19,3 +20,5 @@ initTimer();
 initTasks();
 initProgress();
 initNotifications();
+initCalendar();
+
